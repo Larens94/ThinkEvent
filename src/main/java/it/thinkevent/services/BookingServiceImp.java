@@ -16,7 +16,7 @@ public class BookingServiceImp implements BookingService {
     BookingDao bookingDao;
 
     @Override
-    public Collection<Booking> findByStartBetweenEnd(String start, String end) {
+    public List<Booking> findByStartBetweenEnd(String start, String end) {
         return bookingDao.findByStartBetweenEnd(start,end);
     }
 
@@ -47,19 +47,16 @@ public class BookingServiceImp implements BookingService {
     }
 
     @Override
-    public void update(Booking booking) {
-        try {
-            Optional<Booking> book = bookingDao.verifyBusyRoom(booking.getStart(),booking.getEnd());
-            if(book.isPresent()){
-                //esiste
-                System.out.println("La prenotazione non può avvenire");
-
-            }else{
-                //bookingDao.save(booking);
-                System.out.println("La prenotazione può avvenire");
-            }
-        }catch (Exception e){
-
+    public String update(Booking booking) {
+        Optional<Booking> verifyBusyRoom1 = bookingDao.verifyBusyRoom(booking.getStart(),booking.getEnd());
+        if(verifyBusyRoom1.isPresent()){
+            //esiste
+            System.out.println("La prenotazione non può avvenire");
+            return "Room is busy in this date";
+        }else{
+            //bookingDao.save(booking);
+            System.out.println("Prenotazione creata con successo");
+            return "successful booking";
         }
     }
 
