@@ -31,33 +31,20 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    @Override
+   /* @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http
-                .csrf().disable()
-                .authorizeRequests().antMatchers("/login").permitAll()
+                .authorizeRequests()
+                .antMatchers("/", "/home").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login").permitAll()
+                .loginPage("/login")
+                .permitAll()
                 .and()
-                .logout().invalidateHttpSession(true)
-                .clearAuthentication(true)
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/logout-success").permitAll();
-
+                .logout()
+                .permitAll();
     }
-    /*@Bean
-    @Override
-    public UserDetailsService userDetailsService() {
-        UserDetails user =
-                User.withDefaultPasswordEncoder()
-                        .username("user")
-                        .password("password")
-                        .roles("USER")
-                        .build();
+    */
 
-        return new InMemoryUserDetailsManager(user);
-    }*/
 }

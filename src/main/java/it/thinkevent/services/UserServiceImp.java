@@ -4,12 +4,16 @@ import it.thinkevent.daos.UserDao;
 import it.thinkevent.entities.User;
 import it.thinkevent.utilis.Encryption;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class UserServiceImp implements UserService {
+
+    PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Autowired
     UserDao userDao;
@@ -32,7 +36,7 @@ public class UserServiceImp implements UserService {
     @Override
     public User update(User user) {
         String psw = user.getPassword();
-        user.setPassword(encryption.encrypt(psw));
+        user.setPassword(passwordEncoder.encode(psw));
         return userDao.save(user);
     }
 

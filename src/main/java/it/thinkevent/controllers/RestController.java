@@ -16,7 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
-@Controller
+@org.springframework.web.bind.annotation.RestController
+@RequestMapping("/api")
 public class RestController {
 
     @Autowired
@@ -29,38 +30,7 @@ public class RestController {
     RoomServiceImp roomServiceImp;
 
 
-   /* @RequestMapping(value = "/login",method = RequestMethod.GET)
-    public String login(HttpServletRequest request){
-        //restituiamo l'oggetto operationservice che filtra in base ad account risposta json per il front-end
-        return "login";
-    }
-
-    @RequestMapping(value = "/home",method = RequestMethod.GET)
-    public String home(HttpServletRequest request){
-        //restituiamo l'oggetto operationservice che filtra in base ad account risposta json per il front-end
-        return "home";
-    }*/
-
-
-    @RequestMapping(value = "/",method = RequestMethod.GET)
-    public String home(HttpServletRequest request){
-        //restituiamo l'oggetto operationservice che filtra in base ad account risposta json per il front-end
-        return "home.jsp";
-    }
-
-    @RequestMapping("/login")
-    public String loginPage()
-    {
-        return "login.jsp";
-    }
-
-    @RequestMapping("/logout-success")
-    public String logoutPage()
-    {
-        return "logout.jsp";
-    }
-
-   /* @RequestMapping(value = "/users",method = RequestMethod.GET)
+   @RequestMapping(value = "/users",method = RequestMethod.GET)
     public List<User> getAllUser(HttpServletRequest request){
             //restituiamo l'oggetto operationservice che filtra in base ad account risposta json per il front-end
          return userServiceImp.getAll();
@@ -138,6 +108,5 @@ public class RestController {
     public void deleteBooking(Booking booking,HttpServletRequest request){
             bookingServiceImp.delete(booking);
     }
-    */
 
 }
