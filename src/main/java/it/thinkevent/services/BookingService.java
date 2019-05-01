@@ -14,8 +14,8 @@ public interface BookingService {
 
     Collection<Booking>  verifyBusyRoom(String start,String end);
     List<Booking> getAll();
-    Booking create(Booking user);
-    Booking update(Booking user);
+    String create(Booking user);
+    void update(Booking user);
     void delete(Booking user);
 
 }

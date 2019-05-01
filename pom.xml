@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>it.cms.start</groupId>
-	<artifactId>StartCms</artifactId>
+	<artifactId>ThinkEvent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>StartCms</name>
-	<description>CMS start for web marketing </description>
+	<name>ThinkEvent</name>
+	<description>ThinkEvent  </description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -60,6 +60,10 @@
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
 			<version>0.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 	</dependencies>
 
