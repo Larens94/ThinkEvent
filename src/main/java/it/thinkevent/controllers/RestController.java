@@ -4,10 +4,11 @@ import it.thinkevent.entities.Booking;
 import it.thinkevent.entities.Room;
 import it.thinkevent.entities.User;
 import it.thinkevent.services.BookingServiceImp;
+import it.thinkevent.services.MyUserDetailsService;
 import it.thinkevent.services.RoomServiceImp;
 import it.thinkevent.services.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +29,17 @@ public class RestController {
 
     @Autowired
     RoomServiceImp roomServiceImp;
+
+    @Autowired
+    MyUserDetailsService myUserDetailsService;
+
+
+
+    @RequestMapping(value = "/home",method = RequestMethod.GET)
+    public String home(HttpServletRequest request){
+        //restituiamo l'oggetto operationservice che filtra in base ad account risposta json per il front-end
+        return "sei autenticato";
+    }
 
 
    @RequestMapping(value = "/users",method = RequestMethod.GET)

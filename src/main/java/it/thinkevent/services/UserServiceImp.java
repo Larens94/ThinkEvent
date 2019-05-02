@@ -18,9 +18,6 @@ public class UserServiceImp implements UserService {
     @Autowired
     UserDao userDao;
 
-    @Autowired
-    Encryption encryption;
-
     @Override
     public List<User> getAll() {
         return userDao.findAll();
@@ -29,7 +26,7 @@ public class UserServiceImp implements UserService {
     @Override
     public User create(User user) {
         String psw = user.getPassword();
-        user.setPassword(encryption.encrypt(psw));
+        user.setPassword(passwordEncoder.encode(psw));
       return userDao.save(user);
     }
 
